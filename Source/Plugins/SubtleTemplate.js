@@ -155,6 +155,10 @@ SubtleTemplate.Template = new Class({
 	inject: function(parent){
 		this.element.inject( parent || this.parentNode || this.constructor.instance.options.parent );
 		return this.fireEvent("inject");
+	},
+
+	destroy: function(){
+		this.element.destroy();
 	}
 	
 });
