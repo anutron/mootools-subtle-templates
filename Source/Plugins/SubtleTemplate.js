@@ -100,7 +100,7 @@ SubtleTemplate.Template = new Class({
 	data:{},
 	
 	initialize: function(data, options){
-		if($type(data)=='array' && /^(object|hash)$/.test($type(data[0]))){
+		if($type(data)=='array' && (/^(object|hash)$/).test($type(data[0]))){
 			var instances = [];
 			data.each(function(dataSet,index){
 				instances[index] = new this.constructor(dataSet, options);
@@ -123,7 +123,7 @@ SubtleTemplate.Template = new Class({
 		
 		if (match){
 			container = new Element('table');
-			var tag = match[1];
+			tag = match[1];
 			if (tag == 'td' || tag == 'th' || tag == 'tr'){
 				container = new Element('tbody').inject(container);
 				if (tag != 'tr') container = new Element('tr').inject(container);
@@ -139,7 +139,6 @@ SubtleTemplate.Template = new Class({
 	populate: function(data, options){
 		this.constructor.instance.setOptions(options);
 		if(data) this.data = $merge(this.data, data);
-		
 		this.element.set({
 			'html': this.constructor.instance.options.html.substitute(this.data),
 			'class':(this.data.html_class||this.constructor.instance.options['class']||'').substitute(this.data),
